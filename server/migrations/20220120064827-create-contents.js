@@ -16,12 +16,13 @@ module.exports = {
       },
       userInfo_id: {
         type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'userInfos'   
+        references : {
+          model : {
+            tableName: 'userInfos'
           },
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
