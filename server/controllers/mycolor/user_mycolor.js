@@ -1,7 +1,8 @@
-const {color} = require('../../models');
-const {contents} = require('../../models');
-const {music} = require('../../models');
+// const {color} = require('../../models');
+// const {contents} = require('../../models');
+// const {music} = require('../../models');
 
 module.exports = (req, res) => {
-  res.status(500).json({message: 'color'})
+  //res.send("🐳")
+   res.status(200).json({message: 'color'}) 
 }

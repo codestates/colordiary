@@ -8,8 +8,8 @@ const cookieParser = require('cookie-parser');
 // const controllers = require('./controllers/index');
 const cors = require('cors')
 
-const indexRouter = require('./routes/index');
-const linksRouter = require('./routes/links');
+const Router = require('./routes');
+
 
 const app = express();
 
@@ -25,8 +25,10 @@ app.use(cors({
 app.use(cookieParser());
 app.get('/', (req,res) => res.send("hello🦋"))
 
-app.use('/', indexRouter);
-app.use('/links', linksRouter);
+//+++++++++++분기해주는곳
+app.use('/', Router);
+
+
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 5000;
 
@@ -40,10 +42,10 @@ if (fs.existsSync('./key.pem') && fs.existsSync('./cert.pem')) {
   const credentials = { key: privateKey, cert: certificate };
 
   server = https.createServer(credentials, app);
-  server.listen(HTTPS_PORT, () => console.log('https server runnning'));
+  server.listen(HTTPS_PORT, () => console.log('https server runnning👊'));
 } else {
   server = app.listen(HTTPS_PORT, () => {
-    console.log('http server runnning😎')
+    console.log('http server runnning')
    
   });
 }
