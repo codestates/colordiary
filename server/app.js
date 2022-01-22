@@ -27,20 +27,6 @@ app.get('/', (req,res) => res.send("hello🦋"))
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
-// app.post('/signup', controllers.signup);
-// app.post('/login', controllers.login);
-
-// app.get('/user_accesstoken', controllers.user_accesstoken);
-// app.get('/user_refreshtoken', controllers.user_refreshtoken);
-
-// app.post('/user_mycolor', controllers.user_mycolor);
-// app.get('/user_mycolor', controllers.user_mycolor);
-// app.put('/user_mycolor', controllers.user_mycolor);
-// app.delete('/user_mycolor', controllers.user_mycolor);
-
-// app.post('/user_logout', controllers.user_logout);
-// app.delete('/user_delete', controllers.user_delete);
-
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 5000;
 

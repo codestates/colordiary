@@ -2,8 +2,8 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const { userinfo } = require('../../models');
 
-const accessKey = ACCESS_SECRET;
-const refreshKey = REFRESH_SECRET;
+const accessKey = process.env.ACCESS_SECRET;
+const refreshKey = process.env.REFRESH_SECRET;
 
 module.exports = (req, res) => {
     /*

@@ -1,5 +1,5 @@
 const { userinfo } = require('../../models');
-const { generateAccessToken, sendAccessToken } = require('../tokenFunctions');
+const { generateAccessToken, sendAccessToken } = require('../tokenfunction/token');
 
 module.exports = async (req, res) => {
 
