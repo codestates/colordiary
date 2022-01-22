@@ -3,25 +3,30 @@ const fs = require('fs');
 const https = require('https');
 const express = require('express');
 //const path = require('path');
+
 const cookieParser = require('cookie-parser');
-const controllers = require('./controllers/index');
+// const controllers = require('./controllers/index');
 const cors = require('cors')
+
+const indexRouter = require('./routes/index');
+const linksRouter = require('./routes/links');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors(
-  {
+app.use(cors({
     origin: ['https://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
-  }
-  ) 
+  }) 
 );
 
 app.use(cookieParser());
 app.get('/', (req,res) => res.send("hello🦋"))
+
+app.use('/', indexRouter);
+app.use('/links', linksRouter);
 // app.post('/signup', controllers.signup);
 // app.post('/login', controllers.login);
 

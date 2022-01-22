@@ -1,24 +1,28 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('contents', {
+    await queryInterface.createTable('music_colors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
-        type: Sequelize.STRING
+      music_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'music'
+          },
+          key: 'id'
+        },
+        allowNull: false
       },
       color_id: {
-        type: Sequelize.INTEGER
-      },
-      userInfo_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName: 'userInfos'
+        references: {
+          model: {
+            tableName: 'colors'
           },
           key: 'id'
         },
@@ -35,6 +39,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('contents');
+    await queryInterface.dropTable('music_colors');
   }
 };
