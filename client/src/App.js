@@ -1,10 +1,13 @@
+import "./App.css";
+import React, { useState } from "react";
 
-import './App.css';
+import Navbar from "./components/NavBar/NavBar";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div>
-      <h1> 코딩의 세계에 들어온걸 환영합니다🤪</h1>
+      <Navbar />
     </div>
   );
 }
