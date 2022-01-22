@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers');
+const controllers = require('../controllers/index');
 
 router.get('/user_accesstoken', controllers.user_accesstoken);
 router.get('/user_refreshtoken', controllers.user_refreshtoken);
