@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Mycolor() {
+function Footer() {
     return (
         <div>
-            <h1>MyColor</h1>
+            
         </div>
     )
 }
 
-export default Mycolor
+export default Footer
