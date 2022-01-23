@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "../Home";
 import MyColor from "../MyColor";
-import MyPage from "../MyPage";
+import MyPage from "../MyPage/MyPage";
 import LogIn from "../LogIn";
 import SignUp from "../SignUp";
 import MyWriting from "../MyWriting";
