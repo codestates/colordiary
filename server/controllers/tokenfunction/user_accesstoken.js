@@ -29,7 +29,9 @@ module.exports = (req, res) => {
                     createdAt: createdAt,
                     updateAt: updateAt
                 }
-            }
+            },
+            message: '토큰인증이 성공했습니다.'
+
         })
     }
 }
