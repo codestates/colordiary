@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     // 반환된을 유저인포에 찾아서 
 
     if (!refreshTokenData) {
-        res.send(401).json({message :'토큰이 유효하지 않습니다.', data: null})
+        res.send(401).json({message :'토큰이 유효하지 않습니다.' , data: null})
     } else {
         const {username, password, email, mobile} = refreshTokenData
         const user = await userInfo.findOne({where : {
