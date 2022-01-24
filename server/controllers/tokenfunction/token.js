@@ -24,7 +24,7 @@ module.exports = {
         return res.cookie('jwt', refreshtoken, {
             domain: 'localhost',
             path: '/',
-            maxAge: 1 * 1000,
+            maxAge: 5 * 60 * 1000,
             httpOnly: true,
             sameSite: 'None',
             secure: true,
