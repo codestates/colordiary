@@ -1,8 +1,7 @@
-// require('dotenv').config();
-// const jwt = require('jsonwebtoken');
-const { userinfo } = require('../../models');
-
-
+require('dotenv').config();
+const { userInfo } = require('../../models');
+const refreshKey = process.env.REFRESH_SECRET
+const accessKey = process.env.ACCESS_SECRET;
 module.exports = async (req, res) => {
 
     // const refreshToken = req.cookies.refreshToken
@@ -14,26 +13,26 @@ module.exports = async (req, res) => {
     // } //8-14까지 토큰검증 isAuthorized 함수에서 행해지는것..
     
 
-    const refreshTokenData = isAuthorized(req.cookies.refreshToken)  //토큰펑션에서 req.cookie확인  decode = userinfo{}로 반환 
+    const refreshTokenData = isAuthorized(req, refreshKey, 5 * 60 * 1000)  //토큰펑션에서 req.cookie확인  decode = userinfo{}로 반환 
     //토큰펑션에 디코디드해주는곳에 아예 cookie라는것이 없다면 null, 쿠키라는것이 있다면 키로 열어줘서 반환
-    console.log(refreshTokenData, "+++++++++")//유저인포
+    //console.log(refreshTokenData, "+++++++++")//유저인포
 
     // 반환된(decode)된것이 없으면,혹은 조작된 decode일경우 
     // 반환된을 유저인포에 찾아서 
 
     if (!refreshTokenData) {
-        res.send(401).json({message :"토큰이 유효하지 않습니다."})
+        res.send(401).json({message :'토큰이 유효하지 않습니다.', data: null})
     } else {
         const {username, password, email, mobile} = refreshTokenData
-        const userInfo = await userinfo.findOne({where : {
+        const user = await userInfo.findOne({where : {
             username, 
             password, 
             email, 
             mobile
             } 
         })
-        const accessToken = generateAccessToken(userInfo) 
-        res.send(200).json({message : "어세스 토큰을 발급했습니다." , data: accessToken })
+        const accessToken = generateToken(user, accessKey, 1 * 60 * 1000) 
+        res.send(200).json({message:'어세스 토큰을 발급했습니다.' , data: accessToken })
 
      // 유저가 요청한 정보 반환
 
