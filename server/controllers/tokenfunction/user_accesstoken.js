@@ -1,8 +1,8 @@
 require('dotenv').config();
-const { userinfo } = require('../../models');
-
-const accessKey = process.env.ACCESS_SECRET;
+const { userInfo } = require('../../models');
 const { isAuthorized } = require('./token')
+const accessKey = process.env.ACCESS_SECRET;
+
 
 module.exports = async (req, res) => {
     /*
@@ -12,16 +12,17 @@ module.exports = async (req, res) => {
     //res.send({message: 'user_accesstoken'})
     const accessTokenData = isAuthorized(req, accessKey, 1 * 60 * 1000);
     if(!accessTokenData){
-        res.status(401).json({message: '토큰이 유효하지 않습니다.'})
+        res.status(401).json({message :'토큰이 유효하지 않습니다.', data: null})
     } else{
-        const userInfo = await userinfos.findOne({
+        const user = await userInfo.findOne({
             where: {
                 email: accessTokenData.email
             }
         })
-        const { email, username, mobile, createdAt, updateAt } = userInfo.dataValues;
+        const { email, username, mobile, createdAt, updateAt } = user.dataValues;
         return res.status(200).json({
-            data: {
+            message: '토큰인증이 성공했습니다.',
+            data: { 
                 userInfo: {
                     email: email,
                     username: username,
@@ -30,7 +31,6 @@ module.exports = async (req, res) => {
                     updateAt: updateAt
                 }
             },
-            message: '토큰인증이 성공했습니다.'
 
         })
     }

@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
 
 module.exports = {
@@ -53,3 +52,4 @@ module.exports = {
         
     }
 }
+
