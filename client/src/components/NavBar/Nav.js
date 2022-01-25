@@ -50,7 +50,7 @@ function Nav() {
             <Link to="/mywriting">My Writing</Link>
           </LinkDiv>
           <LinkDiv>
-            <Link to="/mypage">MyPage</Link>
+            <Link to="/mypage">My Page</Link>
           </LinkDiv>
         </Left>
         <Button />
