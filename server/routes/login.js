@@ -3,5 +3,5 @@ const router = express.Router();
 const controllers = require('../controllers/index');
 
 router.get('/', controllers.login)
-
+router.post('/', controllers.login)
 module.exports = router;
