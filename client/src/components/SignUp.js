@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const Div = styled.div`
   background-color: pink;
@@ -46,7 +50,51 @@ const Button = styled.button`
   margin-top: 30px;
 `;
 
+const Alert = styled.div`
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+`;
+
 function Signup() {
+  const [userinfo, setuserinfo] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    mobile: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleInputValue = (key) => (e) => {
+    setuserinfo({ ...userinfo, [key]: e.target.value });
+  };
+  const handleSignup = () => {
+    if (
+      userinfo.username === "" ||
+      userinfo.email === "" ||
+      userinfo.password === "" ||
+      userinfo.confirmPassword === "" ||
+      userinfo.mobile === ""
+    ) {
+      setErrorMessage("모든 항목은 필수입니다");
+    } else if (userinfo.password !== userinfo.confirmPassword) {
+      setErrorMessage("비밀번호가 같지 않습니다.");
+    } else {
+      axios.post("https://localhost:5000/signup", {
+        email: userinfo.email,
+        password: userinfo.password,
+        username: userinfo.username,
+        mobile: userinfo.mobile,
+      });
+    }
+  };
   return (
     <Div>
       <Box>
@@ -58,16 +106,37 @@ function Signup() {
         <Fieldset>
           <legend>Sign up for a free account</legend>
           <InputDiv>
-            <Input type="text" placeholder="Username" />
-            <Input type="text" placeholder="Email address" />
-            <Input type="text" placeholder="Create password" />
-            <Input type="text" placeholder="Confirm password" />
-            <Input type="text" placeholder="Mobile" />
+            <Input
+              type="text"
+              onChange={handleInputValue("username")}
+              placeholder="Username"
+            />
+            <Input
+              type="text"
+              onChange={handleInputValue("email")}
+              placeholder="Email address"
+            />
+            <Input
+              type="text"
+              onChange={handleInputValue("password")}
+              placeholder="Create password"
+            />
+            <Input
+              type="text"
+              onChange={handleInputValue("confirmPassword")}
+              placeholder="Confirm password"
+            />
+            <Input
+              type="text"
+              onChange={handleInputValue("mobile")}
+              placeholder="Mobile"
+            />
           </InputDiv>
-          <Button>SiGN UP</Button>
+          <Button onClick={handleSignup}>SiGN UP</Button>
           <Button>LOGIN</Button>
         </Fieldset>
       </Form>
+      <Alert>{errorMessage}</Alert>
     </Div>
   );
 }
