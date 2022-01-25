@@ -11,7 +11,7 @@ module.exports =  async (req, res) => {
         res.status(422).json({message: '정보가 다 입력되지 않았습니다.', data: null})
     } else {
         await userInfo.findOrCreate({
-            where: {email},
+            where: {email: req.body.email},
             defaults: {
               username, email, password, mobile
             }
@@ -20,7 +20,7 @@ module.exports =  async (req, res) => {
             if(!created){
               return res.status(409).json({message: '이미 존재하는 아이디입니다.', data: null});
             } else{
-              const accesstoken = generateToken(user, accessKey, 1 * 60 * 1000);
+              const accesstoken = generateToken(req.body, accessKey, 1 * 60 * 1000);
               sendRefreshToken(res, accesstoken);
               return res.status(201).send({message: '회원가입이 완료되었습니다.', data: accesstoken});
             }
