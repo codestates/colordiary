@@ -64,7 +64,7 @@ function Mycolor() {
       mycontent.mood !== "" &&
       mycontent.message !== ""
     ) {
-      axios.post("https://localhost:4000/myColor", {
+      axios.post("https://localhost:5000/user_mycolor", {
         date: mycontent.date,
         mood: mycontent.mood,
         message: mycontent.message,
