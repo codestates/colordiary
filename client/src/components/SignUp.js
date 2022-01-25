@@ -133,7 +133,9 @@ function Signup() {
             />
           </InputDiv>
           <Button onClick={handleSignup}>SiGN UP</Button>
-          <Button>LOGIN</Button>
+          <Link to="/login">
+            <Button>LOGIN</Button>
+          </Link>
         </Fieldset>
       </Form>
       <Alert>{errorMessage}</Alert>
