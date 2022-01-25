@@ -48,9 +48,27 @@ const Input = styled.input`
 const Button = styled.button`
   margin: 10px;
   margin-top: 30px;
+  padding: 10px;
 `;
 
-function Login() {
+const ButtonDiv = styled.div`
+  text-align: center;
+`;
+
+const Alert = styled.div`
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+`;
+
+function Login({ handleResponseSuccess }) {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -81,13 +99,25 @@ function Login() {
         <Fieldset>
           <h2>Login</h2>
           <InputDiv>
-            <Input type="text" placeholder="Email address" />
-            <Input type="text" placeholder="password" />
+            <Input
+              type="text"
+              onChange={handleInputValue("email")}
+              placeholder="Email address"
+            />
+            <Input
+              type="text"
+              onChange={handleInputValue("password")}
+              placeholder="password"
+            />
           </InputDiv>
-          <Button>LOGIN</Button>
         </Fieldset>
       </Form>
-      <div></div>
+      <ButtonDiv>
+        <Button type="submit" onClick={handleLogin}>
+          LOGIN
+        </Button>
+      </ButtonDiv>
+      <Alert>{errorMessage}</Alert>
     </Div>
   );
 }

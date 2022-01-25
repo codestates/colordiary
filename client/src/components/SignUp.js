@@ -48,6 +48,7 @@ const Input = styled.input`
 const Button = styled.button`
   margin: 10px;
   margin-top: 30px;
+  padding: 10px;
 `;
 
 const Alert = styled.div`
@@ -61,6 +62,10 @@ const Alert = styled.div`
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+`;
+
+const ButtonDiv = styled.div`
+  text-align: center;
 `;
 
 function Signup() {
@@ -132,10 +137,14 @@ function Signup() {
               placeholder="Mobile"
             />
           </InputDiv>
-          <Button onClick={handleSignup}>SiGN UP</Button>
-          <Button>LOGIN</Button>
         </Fieldset>
       </Form>
+      <ButtonDiv>
+        <Button onClick={handleSignup}>SiGN UP</Button>
+        <Link to="/login">
+          <Button>LOGIN</Button>
+        </Link>
+      </ButtonDiv>
       <Alert>{errorMessage}</Alert>
     </Div>
   );
