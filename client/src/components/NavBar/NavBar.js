@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "../Home";
-import MyColor from "../MyColor";
+import MyColor from "../MyColor/MyColor";
 import MyPage from "../MyPage/MyPage";
 import LogIn from "../LogIn";
 import SignUp from "../SignUp";
