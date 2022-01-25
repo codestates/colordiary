@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const Div = styled.div`
   background-color: pink;
@@ -47,6 +51,26 @@ const Button = styled.button`
 `;
 
 function Login() {
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleInputValue = (key) => (e) => {
+    setLoginInfo({ ...loginInfo, [key]: e.target.value });
+  };
+  const handleLogin = () => {
+    if (loginInfo.email !== "" && loginInfo.password !== "") {
+      axios
+        .post("https://localhost:5000/token", {
+          email: loginInfo.email,
+          password: loginInfo.password,
+        })
+        .then(handleResponseSuccess);
+    } else {
+      setErrorMessage("이메일과 비밀번호를 입력하세요");
+    }
+  };
   return (
     <Div>
       <Box>
@@ -63,6 +87,7 @@ function Login() {
           <Button>LOGIN</Button>
         </Fieldset>
       </Form>
+      <div></div>
     </Div>
   );
 }
