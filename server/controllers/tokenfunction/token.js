@@ -1,7 +1,5 @@
 require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
-const accessKey = process.env.ACCESS_SECRET;
-const refreshKey = process.env.REFRESH_SECRET;
 
 module.exports = {
     generateToken: (data, tokenKey, time) => {

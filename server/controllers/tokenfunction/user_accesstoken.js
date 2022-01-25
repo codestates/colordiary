@@ -12,7 +12,7 @@ module.exports = (req, res) => {
     //res.send({message: 'user_accesstoken'})
     const accessTokenData = isAuthorized(req, accessKey, 1 * 60 * 1000);
     if(!accessTokenData){
-        res.status(400).json({message: '토큰이 존재하지 않습니다.'})
+        res.status(401).json({message: '토큰이 유효하지 않습니다.'})
     } else{
         const userInfo = await userinfos.findOne({
             where: {
