@@ -5,7 +5,7 @@ module.exports = {
     generateToken: (data, tokenKey, time) => {
         
         // 어세스토큰발급, 리프레시토큰발급,
-        const {email, username, mobile, createdAt, updatedAt} = data.dataValue;
+        const {email, username, mobile, createdAt, updatedAt} = data
         const tokenMaker = sign({
             email, username, mobile, createdAt, updatedAt
         }, tokenKey, { 
