@@ -4,7 +4,7 @@ module.exports = {
     generateToken: (data, tokenKey, time) => {
         
         // 어세스토큰발급, 리프레시토큰발급,
-        const {email, username, mobile, createdAt, updatedAt} = data.dataValue;
+        const {email, username, mobile, createdAt, updatedAt} = data;
         const tokenMaker = sign({
             email, username, mobile, createdAt, updatedAt
         }, tokenKey, { 
@@ -32,23 +32,27 @@ module.exports = {
 
         // 검증
         //jwt.verify(token, secretOrPublicKey, [options, callback])
-        const headerAuth = req.cookies.jwt
+        console.log("리퀘스트는 뭐가 들어오나요?",req);
+        console.log("헤더 안에 들은건가요??",req.headers);
+        console.log("쿠키 안에 들은건가요???",req.cookie);
+        return;
+        // const headerAuth = req.headers[];
 
-        if(!headerAuth){
-            return null;
-        } else{
-            const tokenVerifier = verify(headerAuth, tokenKey, {
-                algorithm: 'HS256',
-                expiresIn: time
-            }, (err, decoded) => {
-                if(err){
-                    console.log("토큰 검증과정 중 에러발생", err)
-                } else{
-                    return decoded;
-                }
-            });
-            return tokenVerifier;
-        }
+        // if(!headerAuth){
+        //     return null;
+        // } else{
+        //     const tokenVerifier = verify(headerAuth, tokenKey, {
+        //         algorithm: 'HS256',
+        //         expiresIn: time
+        //     }, (err, decoded) => {
+        //         if(err){
+        //             console.log("토큰 검증과정 중 에러발생", err)
+        //         } else{
+        //             return decoded;
+        //         }
+        //     });
+        //     return tokenVerifier;
+        // }
         
     }
 }
