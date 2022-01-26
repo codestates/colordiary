@@ -14,9 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   contents.init({
-    content: DataTypes.STRING,
-    color_id: DataTypes.INTEGER,
-    userInfo_id: DataTypes.INTEGER
+    message: DataTypes.STRING,
+    moodDate: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'contents',
