@@ -44,10 +44,7 @@ function Nav() {
             <Link to="/">Home</Link>
           </LinkDiv>
           <LinkDiv>
-            <Link to="/mycolor">My Color</Link>
-          </LinkDiv>
-          <LinkDiv>
-            <Link to="/mywriting">My Writing</Link>
+            <Link to="/Mycolor">My Color</Link>
           </LinkDiv>
           <LinkDiv>
             <Link to="/mypage">My Page</Link>

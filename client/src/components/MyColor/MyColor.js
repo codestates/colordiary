@@ -1,111 +1,63 @@
-import React, { useState } from "react";
-import axios from "axios";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
-import styled from "styled-components";
+import { useState, useContext, useEffect } from "react";
+import { DiaryStateContext } from "./Basic";
+import MyHeader from "./components/MyHeader";
+import MyButton from "./components/Mybutton";
+import DiaryList from "./components/DiaryList";
 
-axios.defaults.withCredentials = true;
+const Mycolor = () => {
+  const diaryList = useContext(DiaryStateContext);
 
-const Div = styled.div`
-  background-color: aliceblue;
-  width: 99vw;
-  height: 40vw;
-`;
-const FrameDiv = styled.div`
-  background-color: antiquewhite;
-  width: 50vw;
-  height: 30vw;
-  text-align: center;
-  align-items: center;
-  margin: auto;
-`;
+  const [data, setDate] = useState([]);
+  const [curDate, setCurDate] = useState(new Date());
+  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
-const Textareaa = styled.textarea`
-  width: 25vw;
-  height: 10vw;
-  margin-top: 20px;
-`;
-const PickerDiv = styled.div`
-  margin-top: 20px;
-  margin-bottom: 15px;
-  padding: 10px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-`;
-
-const Alert = styled.div`
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  text-align: center;
-  align-items: center;
-  position: relative;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-`;
-
-function Mycolor() {
-  const [mycontent, setMycontent] = useState({
-    date: "",
-    mood: "",
-    message: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const handleInputValue = (key) => (e) => {
-    setMycontent({ ...mycontent, [key]: e.target.value });
-  };
-  const handleSubmit = () => {
-    if (
-      mycontent.date !== "" &&
-      mycontent.mood !== "" &&
-      mycontent.message !== ""
-    ) {
-      axios.post("https://localhost:5000/user_mycolor", {
-        date: mycontent.date,
-        mood: mycontent.mood,
-        message: mycontent.message,
-      });
-    } else {
-      setErrorMessage("다 입력되지 않았습니다.");
+  useEffect(() => {
+    if (diaryList.length >= 1) {
+      // 1일
+      const firstDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth(),
+        1
+      ).getTime();
+      // 마지막날
+      const lastDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth() + 1,
+        0
+      ).getTime();
+      // 중간에 있는 날 작성 일기 뽑기
+      setDate(
+        diaryList.filter((it) => firstDay <= it.date && lastDay >= it.date)
+      );
     }
+  }, [diaryList, curDate]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const increaseMonth = () => {
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
+    );
   };
+
+  const decreaseMonth = () => {
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
+    );
+  };
+
   return (
-    <Div>
-      <FrameDiv>
-        <div>
-          <h1>How are you feeling?</h1>
-          <label>Today I feel: </label>
-          <select onChange={handleInputValue("mood")}>
-            <option>😆</option>
-            <option>😃</option>
-            <option>😐</option>
-            <option>😢</option>
-            <option>😱</option>
-          </select>
-        </div>
-        <Textareaa
-          name="feelsMessage"
-          form="feelsForm"
-          placeholder="What happened today?"
-          onChange={handleInputValue("message")}
-        ></Textareaa>
-        <PickerDiv>
-          <DayPickerInput
-            onDayChange={(day) => console.log(day)}
-            onChange={handleInputValue("date")}
-          />
-        </PickerDiv>
-        <Button type="submit" name="button" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </FrameDiv>
-      <Alert>{errorMessage}</Alert>
-    </Div>
+    <div>
+      <MyHeader
+        headText={headText}
+        leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
+        rightChild={<MyButton text={">"} onClick={increaseMonth} />}
+      />
+      <DiaryList diaryList={data} />
+    </div>
   );
-}
+};
 
 export default Mycolor;
