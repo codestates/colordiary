@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 
 const Div = styled.div`
   background-color: pink;
-  width: 1300px;
+  width: 100vw;
   height: 800px;
 `;
 

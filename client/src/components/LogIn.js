@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
   background-color: pink;
-  width: 1300px;
+  width: 100vw;
   height: 800px;
 `;
 
@@ -68,6 +69,7 @@ const Alert = styled.div`
 `;
 
 function Login({ handleResponseSuccess }) {
+  //  const [isLogin, setIsLogin] = useState(false);
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -79,7 +81,7 @@ function Login({ handleResponseSuccess }) {
   const handleLogin = () => {
     if (loginInfo.email !== "" && loginInfo.password !== "") {
       axios
-        .post("https://localhost:5000/token", {
+        .post("https://localhost:5000/login", {
           email: loginInfo.email,
           password: loginInfo.password,
         })

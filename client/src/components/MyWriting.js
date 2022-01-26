@@ -1,11 +1,42 @@
-import React from "react";
-
-//get 요청하기 // 날짜기준(한달치), 무드(이모지), 글쓴거
+import React, { useState } from "react";
 
 function MyWriting() {
+  const [inputs, setInputs] = useState({
+    name: "",
+    nickname: "",
+  });
+
+  const { name, nickname } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const onReset = () => {
+    setInputs({
+      name: "",
+      nickname: "",
+    });
+  };
+
   return (
     <div>
-      <h1>MyWriting</h1>
+      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="nickname"
+        placeholder="닉네임"
+        onChange={onChange}
+        value={nickname}
+      />
+      <button onClick={onReset}>Reset</button>
+      <div>
+        <b>value: </b>
+        {name} ({nickname})
+      </div>
     </div>
   );
 }

@@ -50,10 +50,11 @@ const Alert = styled.div`
 
 function Mycolor() {
   const [mycontent, setMycontent] = useState({
-    date: "",
+    day: "",
     mood: "",
     message: "",
   });
+  const { day, mood, message } = mycontent;
   const [errorMessage, setErrorMessage] = useState("");
   const handleInputValue = (key) => (e) => {
     setMycontent({ ...mycontent, [key]: e.target.value });
@@ -79,7 +80,7 @@ function Mycolor() {
         <div>
           <h1>How are you feeling?</h1>
           <label>Today I feel: </label>
-          <select onChange={handleInputValue("mood")}>
+          <select onChange={handleInputValue("mood")} name="mood">
             <option>😆</option>
             <option>😃</option>
             <option>😐</option>
@@ -88,13 +89,14 @@ function Mycolor() {
           </select>
         </div>
         <Textareaa
-          name="feelsMessage"
+          name="message"
           form="feelsForm"
           placeholder="What happened today?"
           onChange={handleInputValue("message")}
         ></Textareaa>
         <PickerDiv>
           <DayPickerInput
+            name="day"
             onDayChange={(day) => console.log(day)}
             onChange={handleInputValue("date")}
           />
@@ -104,6 +106,13 @@ function Mycolor() {
         </Button>
       </FrameDiv>
       <Alert>{errorMessage}</Alert>
+
+      <div>
+        <h1>ALL WRITING</h1>
+        <p>
+          {day},{mood},{message}
+        </p>
+      </div>
     </Div>
   );
 }

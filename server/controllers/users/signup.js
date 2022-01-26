@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   } else {
     await userInfo
       .findOrCreate({
-        where: { email },
+        where: { email: req.body.email },
         defaults: {
           username,
           email,
@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
             .status(409)
             .json({ message: "이미 존재하는 아이디입니다.", data: null });
         } else {
-          const accesstoken = generateToken(user, accessKey, 1 * 60 * 1000);
+          const accesstoken = generateToken(req.body, accessKey, 1 * 60 * 1000);
           sendRefreshToken(res, accesstoken);
           return res
             .status(201)

@@ -26,8 +26,11 @@ const Input = styled.input`
 
 const Button = styled.button`
   padding: 20px;
-  cursor: grab;
   margin-top: 10px;
+`;
+
+const ButtonDiv = styled.div`
+  text-align: center;
 `;
 
 function ChangePassword() {
@@ -47,8 +50,10 @@ function ChangePassword() {
           <H3>새 비밀번호 확인 : </H3>
           <Input type="text" placeholder="Confirm password" />
         </FlexDiv>
-        <Button>비밀번호 변경</Button>
       </Form>
+      <ButtonDiv>
+        <Button>비밀번호 변경</Button>
+      </ButtonDiv>
     </div>
   );
 }
