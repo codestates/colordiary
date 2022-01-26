@@ -8,28 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
+      message: {
         type: Sequelize.STRING
       },
-      color_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'colors',
-          },
-          key: 'id'
-        },
-        allowNull: false
-      },
-      userInfo_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'userInfos',
-          },
-          key: 'id'
-        },
-        allowNull: false
+      moodDate: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
