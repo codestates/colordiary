@@ -14,27 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   contents.init({
-    content: DataTypes.STRING,
-    color_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: {
-          tableName: 'colors',
-        },
-        key: 'id'
-      },
-      allowNull: false
-    },
-    userInfo_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: {
-          tableName: 'userInfos',
-        },
-        key: 'id'
-      },
-      allowNull: false
-    }
+    message: DataTypes.STRING,
+    moodDate: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'contents',
