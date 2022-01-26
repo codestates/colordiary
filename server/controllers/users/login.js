@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { userInfo } = require('../../models');
+const { userInfos } = require('../../models');
 const {generateToken, sendRefreshToken } = require('../tokenfunction/token');
 const accessKey = process.env.ACCESS_SECRET;
 
@@ -11,7 +11,7 @@ module.exports = {
   
   post: async (req,res) => { 
     console.log(req.body)
-    const user = await userInfo.findOne({where: {email:req.body.email, password: req.body.password}})
+    const user = await userInfos.findOne({where: {email:req.body.email, password: req.body.password}})
     console.log(user)
     if (!user) {
         res.status(412).json({message: '로그인에 실패했습니다.', data : null})
