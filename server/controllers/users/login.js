@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { userInfo } = require('../../models');
+const { userInfos } = require('../../models');
 const {generateToken, sendRefreshToken } = require('../tokenfunction/token');
 const accessKey = process.env.ACCESS_SECRET;
 
