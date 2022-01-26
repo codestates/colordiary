@@ -69,6 +69,9 @@ const ButtonDiv = styled.div`
 `;
 
 function Signup() {
+  // 회원가입여부
+  const [signup, setSignup] = useState(false)
+
   const [userinfo, setuserinfo] = useState({
     username: "",
     email: "",
@@ -77,6 +80,7 @@ function Signup() {
     mobile: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  //const history = useHistory();
   const handleInputValue = (key) => (e) => {
     setuserinfo({ ...userinfo, [key]: e.target.value });
   };
@@ -97,10 +101,18 @@ function Signup() {
         password: userinfo.password,
         username: userinfo.username,
         mobile: userinfo.mobile,
-      });
+      })
+      .then(result => {
+        console.log(result)
+        setSignup(true)
+      })
     }
   };
-  return (
+
+  return signup ? 
+  (<div><h1>회원가입이 완료되었습니다.</h1></div>)
+  :
+  (
     <Div>
       <Box>
         <p>회원가입 하시겠습니까?</p>

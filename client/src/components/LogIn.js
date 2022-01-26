@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
@@ -122,5 +121,4 @@ function Login({ handleResponseSuccess }) {
     </Div>
   );
 }
-
 export default Login;
