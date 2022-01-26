@@ -12,10 +12,10 @@ module.exports = {
   
   post: async (req,res) => { 
     console.log(req.body) //{ loginInfo: { email: 'ㄹ', password: 'ㄹ' } }
-    const user = await userInfo.findOne({where: {email:req.body.loginInfo.email, password: req.body.loginInfo.password}})
+    const user = await userInfo.findOne({where: {email:req.body.email, password: req.body.password}})
     
     if (!user) {
-        res.status(412).json({message: '로그인에 실패했습니다.', data : null})
+        res.status(400).json({message: '로그인에 실패했습니다.', data : null})
     } else {
        const accesstoken = generateToken(user, accessKey, 1 * 60 * 1000) // 비밀번호 넣어줌 토큰 펑션에서 없애주나?
        const refreshtoken =  generateToken(user, refreshKey, 5 * 60 * 1000);

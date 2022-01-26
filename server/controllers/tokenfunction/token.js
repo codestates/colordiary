@@ -33,8 +33,9 @@ module.exports = {
 // header 는 안까보나???/
         // 검증
         //jwt.verify(token, secretOrPublicKey, [options, callback])
-        const headerAuth = req.headers.accesstoken
-
+        //const headerAuth = req.headers.authorization
+        const headerAuth = req.headers.authorization.split(" ")[1];
+    
         if(!headerAuth){
             return null;
         } else{
