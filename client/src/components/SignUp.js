@@ -79,7 +79,8 @@ function Signup() {
   const handleInputValue = (key) => (e) => {
     setuserinfo({ ...userinfo, [key]: e.target.value });
   };
-  const handleSignup = () => {
+  const handleSignup = (event) => {
+    event.preventDefault()
     if (
       userinfo.username === "" ||
       userinfo.email === "" ||

@@ -71,7 +71,8 @@ function Login({authToken,login,accessToken}) {
   };
 
 
-  const loginfunc = () => {
+  const loginfunc = (event) => {
+    event.preventDefault()
     const {email, password} = loginInfo
     if(!email || !password) {
         setErrorMessage("이메일과 비밀번호 모두 입력해주세요") // react구현되었지만 에러메세지 잠깐뜨고 사라짐
@@ -80,8 +81,14 @@ function Login({authToken,login,accessToken}) {
         loginInfo
       })
       .then(result => {
-        authToken(result.data) //토큰 인증
-      })  
+        console.log(result)
+        if(result.data === null) {
+          setErrorMessage("아이디와 비밀번호가 일치하지 않습니다")
+        } else {
+        authToken(result.data)
+        } //토큰 인증
+      })
+      .catch(err => console.log("로그인실패"))  
     }
   }
 

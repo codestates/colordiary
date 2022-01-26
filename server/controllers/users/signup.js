@@ -2,6 +2,7 @@ require('dotenv').config();
 const { userInfo } = require('../../models');
 const { generateToken, sendRefreshToken } = require('../tokenfunction/token');
 const accessKey = process.env.ACCESS_SECRET;
+const refreshKey = process.env.REFRESH_SECRET;
 module.exports =  async (req, res) => {
     const {email, password, username, mobile} = req.body
     console.log(req.body)
@@ -23,7 +24,8 @@ module.exports =  async (req, res) => {
             } else{
               console.log(created)
               const accesstoken = generateToken(req.body, accessKey, 1 * 60 * 1000);
-              sendRefreshToken(res, accesstoken);
+              const refreshtoken =  generateToken(user, refreshKey, 5 * 60 * 1000);
+              sendRefreshToken(res, refreshtoken);
               return res.status(201).send({message: '회원가입이 완료되었습니다.', data: accesstoken});
             }
           
