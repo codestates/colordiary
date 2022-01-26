@@ -24,7 +24,7 @@ module.exports =  async (req, res) => {
               console.log(created)
               const accesstoken = generateToken(req.body, accessKey, 1 * 60 * 1000);
               sendRefreshToken(res, accesstoken);
-              return res.status(201).send({message: '회원가입이 완료되었습니다.', data: {authorization: `Bearer ${accesstoken}`}});
+              return res.status(201).send({message: '회원가입이 완료되었습니다.', data: accesstoken});
             }
           
         }

@@ -22,16 +22,18 @@ module.exports = async (req, res) => {
         const { email, username, mobile, createdAt, updateAt } = user.dataValues;
         return res.status(200).json({
             message: '토큰인증이 성공했습니다.',
-            data: { 
-                userInfo: {
+            data: {
+                 userInfo: {
                     email: email,
                     username: username,
                     mobile: mobile,
                     createdAt: createdAt,
                     updateAt: updateAt
-                }
-            },
+                } 
+            }
 
         })
     }
 }
+// 헤더에 어세스 토큰을 까본 후, 디코드 해서  db에서 찾아서 정보나오는지
+// 확인을 한다. 만약 일치하는것이 있다면 데이터를 담아 보내준다.

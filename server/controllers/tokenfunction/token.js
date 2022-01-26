@@ -30,10 +30,10 @@ module.exports = {
     },
 
     isAuthorized: (req, tokenKey, time) => {
-
+// header 는 안까보나???/
         // 검증
         //jwt.verify(token, secretOrPublicKey, [options, callback])
-        const headerAuth = req.cookies.jwt
+        const headerAuth = req.headers.accesstoken
 
         if(!headerAuth){
             return null;
