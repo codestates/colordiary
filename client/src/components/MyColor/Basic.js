@@ -146,7 +146,7 @@ function Basic() {
               <Route path="/login" element={<LogIn authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login}/>} />
               <Route path="/signup" element={<SignUp/>}/>
               <Route path="/mywriting" element={<Mywriting authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login}/>} />
-              <Route path="/mycolor" element={<Mycolor authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login} />} />
+              <Route path="/mycolor" element={<Mycolor onCreate = {onCreate} authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login} />} />
               <Route path="/edit/:id" element={<Edit authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login}/>} />
               <Route path="/diary/:id" element={<Diary authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login}/>} />
             </Routes>

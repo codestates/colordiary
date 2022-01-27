@@ -20,6 +20,7 @@ function UserInfo({userInfo}) {
         <p>YOURNAME :{username}</p>
         <p>EMAIL :{email}</p>
         <p>MOBILE :{mobile}</p>
+        <button>비밀번호를 변경할 수 있습니다.</button>
       </UserInfoDiv>
     </div>
   );

@@ -11,12 +11,13 @@ const Div = styled.div`
   padding: 10px;
 `;
 
-function MyPage({userInfo, handler}) {
-  const {email} =userInfo
+function MyPage({authToken , accesstoken , userInfo , login}) {
+  
+  const {username} =userInfo
   return (
     <Div>
       <div>
-        <h1>{email}</h1>
+        <h1>{username}님의 정보</h1>
         <UserInfo userInfo ={userInfo}/>
         <ChangePassword />
       </div>
