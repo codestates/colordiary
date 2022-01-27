@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "./Basic";
 import { getStringDate } from "./util/date";
-import { emotionList } from "./util/emotion";
+import { iconList } from "./util/icon";
 
 import MyHeader from "./components/MyHeader";
 import MyButton from "./components/Mybutton";
@@ -38,10 +38,10 @@ const Diary = () => {
   if (!data) {
     return <div className="DiaryPage">로딩중입니다...</div>;
   } else {
-    const curEmotionData = emotionList.find(
-      (it) => parseInt(it.emotion_id) === parseInt(data.emotion)
+    const curIconData = iconList.find(
+      (it) => parseInt(it.icon_id) === parseInt(data.icon)
     );
-    console.log(curEmotionData);
+    console.log(curIconData);
 
     return (
       <div className="DiaryPage">
@@ -63,13 +63,11 @@ const Diary = () => {
             <div
               className={[
                 "diary_img_wrapper",
-                `diary_img_wrapper_${data.emotion}`,
+                `diary_img_wrapper_${data.icon}`,
               ].join(" ")}
             >
-              <img src={curEmotionData.emotion_img} />
-              <div className="emotion_descript">
-                {curEmotionData.emotion_descript}
-              </div>
+              <img src={curIconData.icon_img} />
+              <div className="icon_descript">{curIconData.icon_descript}</div>
             </div>
           </section>
           <section>

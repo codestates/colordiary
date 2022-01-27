@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Box = styled.div`
-  width: 1300px;
+  width: 100vw;
   height: 400px;
   background-color: ${(props) => props.bgColor};
   display: flex;

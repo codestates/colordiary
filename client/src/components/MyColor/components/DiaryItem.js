@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./Mybutton";
 
-const DiaryItem = ({ id, emotion, content, date }) => {
+const DiaryItem = ({ id, icon, content, date }) => {
   const navigate = useNavigate();
 
   const env = process.env;
@@ -22,10 +22,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
     <div className="DiaryItem">
       <div
         onClick={goDetail}
-        className={[
-          "emotion_img_wrapper",
-          `emotion_img_wrapper_${emotion}`,
-        ].join(" ")}
+        className={["icon_img_wrapper", `icon_img_wrapper_${icon}`].join(" ")}
       ></div>
       <div onClick={goDetail} className="info_wrapper">
         <div className="diary_date">{strDate}</div>

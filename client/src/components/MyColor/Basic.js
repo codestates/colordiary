@@ -2,7 +2,12 @@ import "./Basic.css";
 import React, { useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "./MyColor";
+import Nav from "../NavBar/Nav";
+import Home from "../Home";
+import MyPage from "../MyPage/MyPage";
+import LogIn from "../LogIn";
+import SignUp from "../SignUp";
+import Mycolor from "./MyColor";
 import New from "./New";
 import Edit from "./Edit";
 import Diary from "./Diary";
@@ -57,14 +62,14 @@ function Basic() {
 
   const dataId = useRef(0);
   // CREATE
-  const onCreate = (date, content, emotion) => {
+  const onCreate = (date, content, icon) => {
     dispatch({
       type: "CREATE",
       data: {
         id: dataId.current,
         date: new Date(date).getTime(),
         content,
-        emotion,
+        icon,
       },
     });
     dataId.current += 1;
@@ -74,14 +79,14 @@ function Basic() {
     dispatch({ type: "REMOVE", targetId });
   };
   // EDIT
-  const onEdit = (targetId, date, content, emotion) => {
+  const onEdit = (targetId, date, content, icon) => {
     dispatch({
       type: "EDIT",
       data: {
         id: targetId,
         date: new Date(date).getTime(),
         content,
-        emotion,
+        icon,
       },
     });
   };
@@ -97,8 +102,13 @@ function Basic() {
       >
         <BrowserRouter>
           <div className="App">
+            <Nav />
             <Routes>
-              <Route path="/mycolor" element={<Home />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/mycolor" element={<Mycolor />} />
               <Route path="/new" element={<New />} />
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />

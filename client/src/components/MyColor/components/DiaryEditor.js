@@ -5,10 +5,10 @@ import { DiaryDispatchContext } from "../Basic";
 
 import MyButton from "./Mybutton";
 import MyHeader from "./MyHeader";
-import EmotionItem from "./EmotionItem";
+import IconItem from "./IconItem";
 
 import { getStringDate } from "../util/date";
-import { emotionList } from "../util/emotion";
+import { iconList } from "../util/icon";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -16,12 +16,12 @@ env.PUBLIC_URL = env.PUBLIC_URL || "";
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
-  const [emotion, setEmotion] = useState(3);
+  const [icon, setIcon] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
 
   const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
-  const handleClickEmote = useCallback((emotion) => {
-    setEmotion(emotion);
+  const handleClickIcon = useCallback((icon) => {
+    setIcon(icon);
   }, []);
   const navigate = useNavigate();
 
@@ -37,9 +37,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
       )
     ) {
       if (!isEdit) {
-        onCreate(date, content, emotion);
+        onCreate(date, content, icon);
       } else {
-        onEdit(originData.id, date, content, emotion);
+        onEdit(originData.id, date, content, icon);
       }
     }
 
@@ -56,7 +56,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   useEffect(() => {
     if (isEdit) {
       setDate(getStringDate(new Date(parseInt(originData.date))));
-      setEmotion(originData.emotion);
+      setIcon(originData.icon);
       setContent(originData.content);
     }
   }, [isEdit, originData]);
@@ -89,14 +89,14 @@ const DiaryEditor = ({ isEdit, originData }) => {
           </div>
         </section>
         <section>
-          <h4>Today's emotions</h4>
-          <div className="input_box emotion_list_wrapper">
-            {emotionList.map((it) => (
-              <EmotionItem
-                key={it.emotion_id}
+          <h4>Today's mood</h4>
+          <div className="input_box icon_list_wrapper">
+            {iconList.map((it) => (
+              <IconItem
+                key={it.icon_id}
                 {...it}
-                onClick={handleClickEmote}
-                isSelected={it.emotion_id === emotion}
+                onClick={handleClickIcon}
+                isSelected={it.icon_id === icon}
               />
             ))}
           </div>
