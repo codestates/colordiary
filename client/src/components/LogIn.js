@@ -122,7 +122,7 @@ function Login({authToken,login,accessToken, userInfo}) {
             <Input type="text" placeholder="password" onChange = {handleInputValue('password')}/>
           </InputDiv>
           <ButtonDiv>
-            <Button onClick={loginfunc} >LOGIN</Button>
+            <Button onClick={loginfunc}>LOGIN</Button>
           </ButtonDiv>
         </Fieldset>
       </Form>

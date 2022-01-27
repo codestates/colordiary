@@ -30,8 +30,11 @@ const LinkDiv = styled.div`
   margin-left: 10px;
 `;
 
-function Nav() {
+function Nav({authToken, userInfo, login }) {
+  console.log(userInfo,"DSDSDSDSD")
   return (
+    login ?
+   ( <div>
     <Navi>
       <nav>
         <Left>
@@ -48,14 +51,43 @@ function Nav() {
           </LinkDiv>
           <LinkDiv>
             <Link to="/mywriting">My Writing</Link>
-          </LinkDiv>
+          </LinkDiv>          
+        {userInfo.username}님
           <LinkDiv>
             <Link to="/mypage">My Page</Link>
           </LinkDiv>
         </Left>
-        <Button />
       </nav>
     </Navi>
+        <div>
+        <h1>{userInfo.username}님</h1>
+        </div>  
+        </div>  
+   ) : (
+    <Navi>
+      <nav>
+        <Left>
+          <LinkDiv>
+            <Link to="/">
+              <Img />
+            </Link>
+          </LinkDiv>
+          <LinkDiv>
+            <Link to="/">Home</Link>
+          </LinkDiv>
+          <LinkDiv>
+            <Link to="/mycolor">My Color</Link>
+          </LinkDiv>
+          <LinkDiv>
+            <Link to="/mywriting">My Writing</Link>
+          </LinkDiv>          
+         
+          </Left>
+          <Button /> 
+      </nav>
+    </Navi>
+   )
+   
   );
 }
 

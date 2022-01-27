@@ -106,7 +106,9 @@ function Signup() {
   };
 
   return signup ? 
-  (<div><h1>회원가입이 완료되었습니다.</h1></div>)
+  (<div><h1>회원가입이 완료되었습니다.</h1>
+   <button exact path ='/login' Link to ='/login'>로그인하러가기</button>
+  </div>)
   :
   (
     <Div>
