@@ -6,6 +6,7 @@ const Right = styled.div`
   display: flex;
   flex-direction: row;
   float: right;
+  padding-right: 10px;
 `;
 
 const LinkDiv = styled.div`

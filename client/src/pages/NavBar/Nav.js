@@ -6,11 +6,12 @@ import logo from "../img/logo.png";
 import Button from "../NavBar/Button";
 
 const Navi = styled.div`
-  width: 99vw;
+  width: 96vw;
   height: 3vw;
   background-color: blanchedalmond;
   padding: 10px;
   padding-top: 20px;
+  margin-right: 28vw;
 `;
 
 const Img = styled.img`

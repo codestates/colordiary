@@ -70,7 +70,7 @@ const ButtonDiv = styled.div`
 
 function Signup() {
   // 회원가입여부
-  const [signup, setSignup] = useState(false)
+  const [signup, setSignup] = useState(false);
 
   const [userinfo, setuserinfo] = useState({
     username: "",
@@ -96,23 +96,25 @@ function Signup() {
     } else if (userinfo.password !== userinfo.confirmPassword) {
       setErrorMessage("비밀번호가 같지 않습니다.");
     } else {
-      axios.post("https://localhost:5000/signup", {
-        email: userinfo.email,
-        password: userinfo.password,
-        username: userinfo.username,
-        mobile: userinfo.mobile,
-      })
-      .then(result => {
-        console.log(result)
-        setSignup(true)
-      })
+      axios
+        .post("https://localhost:5000/signup", {
+          email: userinfo.email,
+          password: userinfo.password,
+          username: userinfo.username,
+          mobile: userinfo.mobile,
+        })
+        .then((result) => {
+          console.log(result);
+          setSignup(true);
+        });
     }
   };
 
-  return signup ? 
-  (<div><h1>회원가입이 완료되었습니다.</h1></div>)
-  :
-  (
+  return signup ? (
+    <div>
+      <h1>회원가입이 완료되었습니다.</h1>
+    </div>
+  ) : (
     <Div>
       <Box>
         <p>회원가입 하시겠습니까?</p>
@@ -149,13 +151,10 @@ function Signup() {
               placeholder="Mobile"
             />
           </InputDiv>
-<<<<<<< HEAD:client/src/pages/SignUp.js
-=======
           <Button onClick={handleSignup}>SiGN UP</Button>
           <Link to="/login">
             <Button>LOGIN</Button>
           </Link>
->>>>>>> feature/Mycolor:client/src/components/SignUp.js
         </Fieldset>
       </Form>
       <ButtonDiv>

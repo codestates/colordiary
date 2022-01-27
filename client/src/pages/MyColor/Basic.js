@@ -8,7 +8,7 @@ import MyPage from "../MyPage/MyPage";
 import LogIn from "../LogIn";
 import SignUp from "../SignUp";
 import Mywriting from "./Mywriting";
-import Mycolor from "./Mycolor";
+import Mycolor from "./MyColor";
 import Edit from "./Edit";
 import Diary from "./Diary";
 

@@ -1,28 +1,21 @@
 body {
   background-color: #f6f6f6;
-  width: 48vw;
+  width: 40vw;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0px;
+  margin-left: 28vw;
+  margin-right: 25vw;
 }
-@media (min-width: 650px) {
-  .App {
-    width: 640px;
-  }
-}
-@media (max-width: 650px) {
-  .App {
-    width: 90vwx;
-  }
-}
+
 #root {
   background-color: seashell;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .App {
   min-height: 100vh;
+  width: 1300px;
   padding-left: 20px;
   padding-right: 20px;
 }
