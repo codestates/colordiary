@@ -6,8 +6,8 @@ import MyColor from "../MyColor/MyColor";
 import MyPage from "../MyPage/MyPage";
 import LogIn from "../LogIn";
 import SignUp from "../SignUp";
-import MyWriting from "../MyWriting";
-//import Nav from "./Nav";
+import MyWriting from "../MyWriting/MyWriting"
+import Nav from "./Nav";
 import axios from "axios";
 
 function NavBar() {
@@ -29,6 +29,7 @@ function NavBar() {
       Authorization: 'Bearer ' + token
     }
     })
+
     .then(result => {
       /* stateHandler(result) */
     setAccessToken(result)
@@ -40,7 +41,7 @@ function NavBar() {
       mobile: result.data.data.mobile    
     }) 
     })
- }  
+}   
 // // 여기에 mycolor데이터 담아준다.왜냐면 mywriting컴포넌트에 데이터를 주어야하기때문
 // const [post, setPost] = useState({
 //   userInfo_id: userInfo.email, // 로그인에서 데이터 넘겨줄때의 이메일을(고유하니)넘겨주거나 혹은 userInfo.id(고유)로 해도 될것같다.
@@ -53,7 +54,7 @@ function NavBar() {
   return (
     <Router>
       <div>
-        {/* <Nav authToken ={authToken} userInfo = {userInfo} login ={login} /> */}
+       <Nav authToken ={authToken} userInfo = {userInfo} login ={login} /> 
         <Routes>
          // <Route exact path="/" element={<Home authToken ={authToken} userInfo = {userInfo} login ={login}/>} />
           <Route exact path="/mycolor" element={<MyColor authToken ={authToken} userInfo = {userInfo} login ={login}/>} />
