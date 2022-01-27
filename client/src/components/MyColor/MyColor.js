@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
@@ -151,3 +152,16 @@ function Mycolor() {
   );
 }
 export default Mycolor;
+=======
+import DiaryEditor from "./components/DiaryEditor";
+
+const New = () => {
+  return (
+    <div>
+      <DiaryEditor />
+    </div>
+  );
+};
+
+export default New;
+>>>>>>> 9342f6fafe461d35d15d36f256172d1238bdfaf3
