@@ -11,14 +11,15 @@ const UserInfoDiv = styled.div`
   margin: 20px auto;
 `;
 
-function UserInfo() {
+function UserInfo({userInfo}) {
+  const {email,username,mobile} = userInfo
   return (
     <div>
       <UserInfoDiv>
         <h1>User Info</h1>
-        <p>YOURNAME :</p>
-        <p>EMAIL :</p>
-        <p>MOBILE :</p>
+        <p>YOURNAME :{username}</p>
+        <p>EMAIL :{email}</p>
+        <p>MOBILE :{mobile}</p>
       </UserInfoDiv>
     </div>
   );

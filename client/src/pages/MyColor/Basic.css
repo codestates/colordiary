@@ -14,6 +14,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .App {
+  width: 1300px;
   min-height: 100vh;
   width: 1300px;
   padding-left: 20px;

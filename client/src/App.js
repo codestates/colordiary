@@ -5,6 +5,7 @@ import Basic from "./pages/MyColor/Basic";
 
 function App() {
   return (
+    
     <div>
       <Basic />
     </div>
