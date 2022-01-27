@@ -5,7 +5,7 @@ import ChangePassword from "./ChangePassword";
 import Button from "./Button";
 
 const Div = styled.div`
-  background-color: pink;
+  background-color: aliceblue;
   width: 100vw;
   height: 100vw;
   padding: 10px;
@@ -18,7 +18,7 @@ function MyPage({authToken , accessToken , userInfo , login}) {
     <Div>
       <div>
         <h1>{username}님의 정보</h1>
-        <UserInfo userInfo ={userInfo}/>
+        <UserInfo userInfo={userInfo} />
         <ChangePassword />
       </div>
       <Button authToken ={authToken} accessToken={accessToken}  userInfo = {userInfo} login ={login}/>

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
-  background-color: pink;
-  width: 1300px;
+  background-color: aliceblue;
+  width: 100vw;
   height: 800px;
 `;
 
@@ -52,7 +53,7 @@ const Button = styled.button`
 
 const Alert = styled.div`
   color: #721c24;
-  background-color: #f8d7da;
+  background-color: #cce5ff;
   border-color: #f5c6cb;
   text-align: center;
   align-items: center;
@@ -65,7 +66,9 @@ const Alert = styled.div`
 
 function Signup() {
   // 회원가입여부
-  const [signup, setSignup] = useState(false)
+  const [signup, setSignup] = useState(false);
+
+  const navigator = useNavigate();
 
   const [userinfo, setuserinfo] = useState({
     username: "",
@@ -80,7 +83,7 @@ function Signup() {
     setuserinfo({ ...userinfo, [key]: e.target.value });
   };
   const handleSignup = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (
       userinfo.username === "" ||
       userinfo.email === "" ||
@@ -92,25 +95,26 @@ function Signup() {
     } else if (userinfo.password !== userinfo.confirmPassword) {
       setErrorMessage("비밀번호가 같지 않습니다.");
     } else {
-      axios.post("https://localhost:5000/signup", {
-        email: userinfo.email,
-        password: userinfo.password,
-        username: userinfo.username,
-        mobile: userinfo.mobile,
-      })
-      .then(result => {
-        console.log(result)
-        setSignup(true)
-      })
+      axios
+        .post("https://localhost:5000/signup", {
+          email: userinfo.email,
+          password: userinfo.password,
+          username: userinfo.username,
+          mobile: userinfo.mobile,
+        })
+        .then((result) => {
+          console.log(result);
+          setSignup(true);
+        });
     }
   };
 
-  return signup ? 
-  (<div><h1>회원가입이 완료되었습니다.</h1>
-   <button exact path ='/login' Link to ='/login'>로그인하러가기</button>
-  </div>)
-  :
-  (
+  return signup ? (
+    <div>
+      <h1>회원가입이 완료되었습니다.</h1>
+      <button onClick={() => navigator("../login")}>Login</button>
+    </div>
+  ) : (
     <Div>
       <Box>
         <p>회원가입 하시겠습니까?</p>
