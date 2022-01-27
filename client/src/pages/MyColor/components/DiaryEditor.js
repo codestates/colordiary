@@ -2,9 +2,8 @@ import { useState, useRef, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DiaryDispatchContext } from "../Basic";
-
-import MyButton from "./Mybutton";
 import MyHeader from "./MyHeader";
+import MyButton from "./Mybutton";
 import IconItem from "./IconItem";
 
 import { getStringDate } from "../util/date";
@@ -64,12 +63,11 @@ const DiaryEditor = ({ isEdit, originData }) => {
   return (
     <div className="DiaryEditor">
       <MyHeader
-        headText={isEdit ? "DIARY EDIT" : "NEW DIARY"}
-        leftChild={<MyButton text={"<< BACK"} onClick={() => navigate(-1)} />}
+        headText={isEdit ? "일기 수정하기" : "새 일기쓰기"}
         rightChild={
           isEdit && (
             <MyButton
-              text={"DELETE"}
+              text={"삭제하기"}
               type={"negative"}
               onClick={handleRemove}
             />

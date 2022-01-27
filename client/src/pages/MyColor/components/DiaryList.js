@@ -88,7 +88,7 @@ const DiaryList = ({ diaryList }) => {
           <MyButton
             type={"positive"}
             text={"NEW DIARY"}
-            onClick={() => navigate("/new")}
+            onClick={() => navigate("/mycolor")}
           />
         </div>
       </div>

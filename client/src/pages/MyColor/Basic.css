@@ -1,11 +1,11 @@
 body {
   background-color: #f6f6f6;
-  width: 40vw;
+  width: 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin-left: 28vw;
+  margin-left: 48vw;
   margin-right: 25vw;
 }
 
@@ -218,18 +218,13 @@ header .head_btn_right {
 .IconItem {
   cursor: pointer;
 
-  border-radius: 5px;
+  border-radius: 100px;
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.IconItem img {
-  width: 50%;
-  margin-bottom: 10px;
 }
 
 .IconItem span {

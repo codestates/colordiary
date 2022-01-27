@@ -11,13 +11,11 @@ const Div = styled.div`
   padding: 10px;
 `;
 
-function MyPage({userInfo, handler}) {
-  const {email} =userInfo
+function MyPage({ userInfo, handler }) {
   return (
     <Div>
       <div>
-        <h1>{email}</h1>
-        <UserInfo userInfo ={userInfo}/>
+        <UserInfo userInfo={userInfo} />
         <ChangePassword />
       </div>
       <Button />
