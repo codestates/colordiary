@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
-  background-color: pink;
-  width: 1300px;
+  background-color: aliceblue;
+  width: 100vw;
   height: 800px;
 `;
 
@@ -53,11 +54,26 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
+const Alert = styled.div`
+  color: #721c24;
+  background-color: #cce5ff;
+  border-color: #f5c6cb;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+`;
+
 function Login({ authToken, login, accessToken, userInfo }) {
   /* ''였다가 이메일 패스워드 입력해서 그것이 전송되면 (디비에서찾아서 어세스토큰을 발급해주고,쿠키를발급해줌)
   .then(받은 데이터(어세스토큰)를 헤더에 넣어서 겟요청해줌) */
   //console.log(props)
   // 로그인에 입력할 정보
+
+  const navigator = useNavigate();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -107,6 +123,7 @@ function Login({ authToken, login, accessToken, userInfo }) {
   return login ? (
     <div>
       <h1>🌸로그인 완료되었습니다.🌸</h1>
+      <button onClick={() => navigator("../mycolor")}>My Color</button>
     </div>
   ) : (
     <Div>
@@ -134,7 +151,7 @@ function Login({ authToken, login, accessToken, userInfo }) {
           </ButtonDiv>
         </Fieldset>
       </Form>
-      <Div>{errorMessage}</Div>
+      <Alert>{errorMessage}</Alert>
     </Div>
   );
 }

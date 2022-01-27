@@ -6,18 +6,17 @@ import logo from "../img/logo.png";
 import Button from "../NavBar/Button";
 
 const Navi = styled.div`
-  width: 96vw;
+  width: 100vw;
   height: 3vw;
-  background-color: blanchedalmond;
+  background-color: skyblue;
   padding: 10px;
   padding-top: 20px;
-  margin-right: 28vw;
 `;
 
 const Img = styled.img`
   background-image: url(${logo});
   width: 58px;
-  height: 30px;
+  height: 20px;
 `;
 
 const Left = styled.div`
@@ -29,8 +28,21 @@ const Left = styled.div`
 
 const LinkDiv = styled.div`
   margin-left: 10px;
+  height: 30px;
 `;
 
+const RightDiv = styled.div`
+  display: flex;
+  margin: 0 10px;
+  position: static;
+  margin: 20px;
+  height: 30px;
+  float: right;
+`;
+
+const PDiv = styled.div`
+  margin-right: 20px;
+`;
 function Nav({ authToken, userInfo, login }) {
   console.log(userInfo, "DSDSDSDSD");
   return login ? (
@@ -52,13 +64,18 @@ function Nav({ authToken, userInfo, login }) {
             <LinkDiv>
               <Link to="/mywriting">My Writing</Link>
             </LinkDiv>
-            {userInfo.username}님
-            <LinkDiv>
-              <Link to="/mypage">My Page</Link>
-            </LinkDiv>
           </Left>
+          <RightDiv>
+            <PDiv>{userInfo.username} 님</PDiv>
+            <div>
+              <Link to="/mypage">My Page</Link>
+            </div>
+          </RightDiv>
         </nav>
       </Navi>
+      <div>
+        <h1>{userInfo.username} 님</h1>
+      </div>
     </div>
   ) : (
     <Navi>

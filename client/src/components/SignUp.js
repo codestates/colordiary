@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
-  background-color: pink;
+  background-color: aliceblue;
   width: 100vw;
   height: 800px;
 `;
@@ -48,12 +49,11 @@ const Input = styled.input`
 const Button = styled.button`
   margin: 10px;
   margin-top: 30px;
-  padding: 10px;
 `;
 
 const Alert = styled.div`
   color: #721c24;
-  background-color: #f8d7da;
+  background-color: #cce5ff;
   border-color: #f5c6cb;
   text-align: center;
   align-items: center;
@@ -64,13 +64,11 @@ const Alert = styled.div`
   border-radius: 0.25rem;
 `;
 
-const ButtonDiv = styled.div`
-  text-align: center;
-`;
-
 function Signup() {
   // 회원가입여부
   const [signup, setSignup] = useState(false);
+
+  const navigator = useNavigate();
 
   const [userinfo, setuserinfo] = useState({
     username: "",
@@ -114,9 +112,7 @@ function Signup() {
   return signup ? (
     <div>
       <h1>회원가입이 완료되었습니다.</h1>
-      <button exact path="/login" Link to="/login">
-        로그인하러가기
-      </button>
+      <button onClick={() => navigator("../login")}>Login</button>
     </div>
   ) : (
     <Div>
@@ -161,12 +157,6 @@ function Signup() {
           </Link>
         </Fieldset>
       </Form>
-      <ButtonDiv>
-        <Button onClick={handleSignup}>SiGN UP</Button>
-        <Link to="/login">
-          <Button>LOGIN</Button>
-        </Link>
-      </ButtonDiv>
       <Alert>{errorMessage}</Alert>
     </Div>
   );

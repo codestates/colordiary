@@ -5,7 +5,7 @@ import ChangePassword from "./ChangePassword";
 import Button from "./Button";
 
 const Div = styled.div`
-  background-color: pink;
+  background-color: aliceblue;
   width: 100vw;
   height: 100vw;
   padding: 10px;

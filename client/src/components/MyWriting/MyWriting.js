@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const BigDiv = styled.div`
+  background-color: aliceblue;
   margin-top: 20px;
-  width: 1300px;
-  height: auto;
+  width: 100vw;
+  height: 800px;
 `;
 
 const NavDiv = styled.div`
