@@ -1,13 +1,11 @@
 import "./App.css";
 import React from "react";
-
-import Basic from "./pages/MyColor/Basic";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
-    
     <div>
-      <Basic />
+      <NavBar />
     </div>
   );
 }
