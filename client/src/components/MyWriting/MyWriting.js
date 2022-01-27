@@ -88,8 +88,8 @@ const ImgDiv = styled.div`
   margin-right: 20px;
 `;
 
-const Dbutton = styled.div`
-  background-color: ${(props) => props.bgColor};
+const Ebutton = styled.div`
+  background-color: #e6f4fa;
   margin-top: 30px;
   margin-right: 40px;
   padding-left: 30px;
@@ -99,7 +99,27 @@ const Dbutton = styled.div`
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.65);
   border-radius: 10px;
+  &:hover {
+    background-color: #cce5ff;
+  }
 `;
+
+const Dbutton = styled.div`
+  background-color: rgba(233, 52, 128, 0.12);
+  margin-top: 30px;
+  margin-right: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.65);
+  border-radius: 10px;
+  &:hover {
+    background-color: #ffcce5;
+  }
+`;
+
 const Mywriting = () => {
   return (
     <BigDiv>
@@ -142,8 +162,8 @@ const Mywriting = () => {
             <text>안녕!</text>
           </div>
           <div>
-            <Dbutton bgColor="#e6f4fa">수정하기</Dbutton>
-            <Dbutton bgColor="rgba(233, 52, 128, 0.12)">삭제하기</Dbutton>
+            <Ebutton>수정하기</Ebutton>
+            <Dbutton>삭제하기</Dbutton>
           </div>
         </FlexDiv>
         <FlexDiv>
@@ -155,8 +175,8 @@ const Mywriting = () => {
             <text>hi!</text>
           </div>
           <div>
-            <Dbutton bgColor="#e6f4fa">수정하기</Dbutton>
-            <Dbutton bgColor="rgba(233, 52, 128, 0.12)">삭제하기</Dbutton>
+            <Ebutton>수정하기</Ebutton>
+            <Dbutton>삭제하기</Dbutton>
           </div>
         </FlexDiv>
         <FlexDiv>
@@ -168,8 +188,8 @@ const Mywriting = () => {
             <text>Hmmmmmm!</text>
           </div>
           <div>
-            <Dbutton bgColor="#e6f4fa">수정하기</Dbutton>
-            <Dbutton bgColor="rgba(233, 52, 128, 0.12)">삭제하기</Dbutton>
+            <Ebutton>수정하기</Ebutton>
+            <Dbutton>삭제하기</Dbutton>
           </div>
         </FlexDiv>
       </div>
