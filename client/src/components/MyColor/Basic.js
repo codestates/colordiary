@@ -7,8 +7,8 @@ import Home from "../Home";
 import MyPage from "../MyPage/MyPage";
 import LogIn from "../LogIn";
 import SignUp from "../SignUp";
-import Mycolor from "./MyColor";
-import New from "./New";
+import Mywriting from "./Mywriting";
+import Mycolor from "./Mycolor";
 import Edit from "./Edit";
 import Diary from "./Diary";
 
@@ -108,8 +108,8 @@ function Basic() {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/login" element={<LogIn />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/mywriting" element={<Mywriting />} />
               <Route path="/mycolor" element={<Mycolor />} />
-              <Route path="/new" element={<New />} />
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
