@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+
 import styled from "styled-components";
-<<<<<<< HEAD
 import  { useState } from "react";
 import axios from 'axios';
 axios.defaults.withCredentials = true; 
-=======
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
->>>>>>> 9342f6fafe461d35d15d36f256172d1238bdfaf3
 
 const Div = styled.div`
   background-color: pink;
