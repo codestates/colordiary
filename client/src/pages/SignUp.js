@@ -149,6 +149,13 @@ function Signup() {
               placeholder="Mobile"
             />
           </InputDiv>
+<<<<<<< HEAD:client/src/pages/SignUp.js
+=======
+          <Button onClick={handleSignup}>SiGN UP</Button>
+          <Link to="/login">
+            <Button>LOGIN</Button>
+          </Link>
+>>>>>>> feature/Mycolor:client/src/components/SignUp.js
         </Fieldset>
       </Form>
       <ButtonDiv>

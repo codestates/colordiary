@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
-import styled from "styled-components";
+import DiaryEditor from "./components/DiaryEditor";
 
+<<<<<<< HEAD:client/src/pages/MyColor/MyColor.js
 axios.defaults.withCredentials = true;
 
 const Div = styled.div`
@@ -114,7 +111,14 @@ function Mycolor() {
         </p>
       </div>
     </Div>
+=======
+const New = () => {
+  return (
+    <div>
+      <DiaryEditor />
+    </div>
+>>>>>>> feature/Mycolor:client/src/components/MyColor/MyColor.js
   );
-}
+};
 
-export default Mycolor;
+export default New;
