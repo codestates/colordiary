@@ -11,7 +11,7 @@ const Div = styled.div`
   padding: 10px;
 `;
 
-function MyPage({authToken , accesstoken , userInfo , login}) {
+function MyPage({authToken , accessToken , userInfo , login}) {
   
   const {username} =userInfo
   return (
@@ -21,7 +21,7 @@ function MyPage({authToken , accesstoken , userInfo , login}) {
         <UserInfo userInfo ={userInfo}/>
         <ChangePassword />
       </div>
-      <Button />
+      <Button authToken ={authToken} accessToken={accessToken}  userInfo = {userInfo} login ={login}/>
     </Div>
   );
 }

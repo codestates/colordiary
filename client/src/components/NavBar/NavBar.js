@@ -24,32 +24,28 @@ function NavBar() {
  
  //1.토큰인증 받고 2.성공하면 로그인 상태변경 저장,토큰저장,받아온 데이터(유저정보)저장
  const authToken = (token) => {
+    setAccessToken(token)
    axios.get("https://localhost:5000/user_accesstoken",{
     headers : {
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + accessToken
     }
-    })
-
+    }
+    )
     .then(result => {
       /* stateHandler(result) */
-    setAccessToken(result)
-    setLogin(true)
-    setUserInfo(
+      console.log(result ,"DDDDDD")
+       // setAccessToken(result)
+        setLogin(true)
+        setUserInfo(
     {
       email: result.data.data.email,
       username: result.data.data.username,
       mobile: result.data.data.mobile    
     }) 
     })
-}   
-// // 여기에 mycolor데이터 담아준다.왜냐면 mywriting컴포넌트에 데이터를 주어야하기때문
-// const [post, setPost] = useState({
-//   userInfo_id: userInfo.email, // 로그인에서 데이터 넘겨줄때의 이메일을(고유하니)넘겨주거나 혹은 userInfo.id(고유)로 해도 될것같다.
-//   icon_id:
-//   message: 
+    }  
 
-// })
-
+    console.log(accessToken,'🎟')
 
   return (
     <Router>
@@ -57,7 +53,7 @@ function NavBar() {
        <Nav authToken ={authToken} userInfo = {userInfo} login ={login} /> 
         <Routes>
          // <Route exact path="/" element={<Home authToken ={authToken} userInfo = {userInfo} login ={login}/>} />
-          <Route exact path="/mycolor" element={<MyColor authToken ={authToken} userInfo = {userInfo} login ={login}/>} />
+          <Route exact path="/mycolor" element={<MyColor authToken ={authToken} userInfo = {userInfo} login ={login} accessToken ={accessToken}/>} />
           <Route exact path="/mywriting" element={<MyWriting authToken ={authToken} accesstoken ={accessToken} userInfo = {userInfo} login ={login}/>} />
           <Route exact path="/mypage" element={<MyPage accessToken={accessToken}  userInfo = {userInfo} login ={login} />} />
           <Route exact path="/login" element={<LogIn authToken ={authToken} login ={login} accessToken={accessToken} userInfo={userInfo} />} />
@@ -66,6 +62,6 @@ function NavBar() {
       </div>
     </Router>
   );
+    
 }
-
 export default NavBar;

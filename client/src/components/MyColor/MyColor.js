@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
+axios.defaults.withCredentials = true; 
 
 const BigDiv = styled.div`
   background-color: aliceblue;
@@ -56,35 +57,42 @@ const Button2 = styled.button`
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.65);
 `;
-function MyColor({authToken, accesstoken, userInfo}) {
+function MyColor({authToken, accessToken, userInfo}) {
 // 일단 <작성완료> onclick 이벤트를 실행시키자마자 토큰인증함수를 실행시키고(어세스토큰을 주어 서버에서 )
 //모든정보를 받아온다. 그리고는 
+    
     const {email} = userInfo
     const[startDate, setStartDate] = useState(new Date());
     const[icon, setIcon] = useState(null)
     const[content, setContent] = useState("")
     console.log(startDate,")()()()(")
     
-  
+  const iconAddress = {  
+      '1':"assets/emotion1.png",
+      '2':"assets/emotion2.png",
+      '3':"assets/emotion3.png",
+      '4':"assets/emotion4.png",
+      '5':"assets/emotion5.png"
+    }
     // 아이콘 픽
     const pickFunc1 = () => {
-        setIcon("assets/emotion1.png")
+        setIcon(1)
         console.log("1")
     }
     const pickFunc2 = () => {
-        setIcon("assets/emotion2.png")
+        setIcon(2)
         console.log("2")
     }
     const pickFunc3 = () => {
-        setIcon("assets/emotion3.png")
+        setIcon(3)
         console.log("3")
     }
     const pickFunc4 = () => {
-        setIcon("assets/emotion4.png")
+        setIcon(4)
         console.log("4")
     }
     const pickFunc5 = () => {
-        setIcon("assets/emotion5.png")
+        setIcon(5)
         console.log("5")
     }
 
@@ -99,12 +107,27 @@ function MyColor({authToken, accesstoken, userInfo}) {
 
 
     // 포스트요청
-    let body = {id: email, userdate: startDate, icon: icon, content: content}
+    let body = {email: email, date: startDate, icon: icon,  content: content}
     console.log(body)
     
-    const clickPost = () => {    
-        axios.post("https://localhost:5000/user-mycolor", body)
+    const clickPost = (token) => {
+        console.log(accessToken, "토큰이 나왔니?")
+        axios.post("https://localhost:5000/user_mycolor", body,{
+        headers : {
+            Authorization: 'Bearer ' + token
+        }  
+    })
+    .then(result => console.log(result))
+    
     }
+    const clickDelete = (token) => {
+        axios.delete("https://localhost:5000/user_mycolor", {
+            headers : {
+                Authorization: 'Bearer ' + token
+            }     
+        }).then(result => console.log(result))
+    }
+
 
 
    
@@ -151,8 +174,8 @@ function MyColor({authToken, accesstoken, userInfo}) {
         </div>
       </section>
       <div>
-        <Button1>취소하기</Button1>
-        <Button2 onClick={clickPost}>작성완료</Button2> // alert넣기
+        <Button1 onClick={clickDelete(accessToken)}>취소하기</Button1>
+        <Button2 onClick={clickPost(accessToken)}>작성완료</Button2> 
       </div>
     </BigDiv>
         </div>

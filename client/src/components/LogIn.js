@@ -74,6 +74,7 @@ function Login({authToken,login,accessToken, userInfo}) {
 
 
   const loginfunc = (event) => {
+  
     let headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
   headers.append("Accept", '*/*');
@@ -91,12 +92,13 @@ function Login({authToken,login,accessToken, userInfo}) {
       .then(result => {
         console.log(result)
         if(result.data === null) {
-          setErrorMessage("아이디와 비밀번호가 일치하지 않습니다")
+          setErrorMessage("아이디와  비밀번호가 일치하지 않습니다")
         } else {
-        //  console.log(result.data.data) 어세스토큰
+        console.log(result.data.data,"어세스토큰") 
+
         authToken(result.data.data)
         } //토큰 인증
-      })
+        })
       .catch(err => console.log("로그인실패"))  
     }
   }
