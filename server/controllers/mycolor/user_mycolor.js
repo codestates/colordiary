@@ -77,6 +77,7 @@ module.exports =  {
               userInfo_id: id
             }
           }).then((data)=>{
+            console.log(data)
             return res.status(201).json({message: '성공했습니다', data: data}) 
           })
         })
@@ -89,28 +90,30 @@ module.exports =  {
     console.log(req.body,"+_+_+_++_+_+_+");
     const { email, date, content, icon } = req.body;
     if(!email || !date || !content || !icon){
-      return res.status(404).json({message: '내용이 없습니다.', data: null})
+    /* if(!email || !moodDate || !message || !iconName){ */
+      return res.status(404).json({message: '내용이 없습니다.'})
     } else{
       const auth = isAuthorized(req, accessKey, 1 * 60 * 1000)
       if(!auth){
         return res.status(404).json({message: '웹페이지를 표시할 수 없습니다..', data: null})
       }else{
-        await userInfo.findOne({
+      await userInfo.findOne({
           where:{
             email: email
           }
         }).then((result)=>{
-          const id = result.id
+          console.log(result,"dddddddd")
+           const id = result.id
 
           contents.create({
             message: content,
-            icon: icon,
+            icon_id: icon,
             moodDate: date,
-            userInfo_id: id
+            userInfo_id: id 
           }).then(()=>{
             return res.status(201).json({message: '성공했습니다'}) 
           })
-        })
+       }) 
       }      
     }
   },

@@ -17,6 +17,7 @@ module.exports = async (req, res) => {
     const [user, created] = await userInfo.findOrCreate({
       where: { email: req.body.email },
       defaults: {
+        
         username,
         password,
         mobile,

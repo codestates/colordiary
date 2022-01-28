@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-
+import { useNavigate } from "react-router";
 const ModalContainer = styled.div`
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@ const WithDrawal = ({accessToken, login, userInfo}) => {
       console.log("회원탈퇴 과정에서 오류 발생", err)
     })
   } 
-    
+  const navigator = useNavigate();
 
   return (
     <>
@@ -75,7 +75,8 @@ const WithDrawal = ({accessToken, login, userInfo}) => {
           <ModalBackdrop onClick={openModalHandler}>
             <ModalView onClick={(e) => e.stopPropagation()}>
               <div>회원탈퇴 되었습니다.</div>
-              <button className="btn" onClick={openModalHandler} onClick={userDelete(accessToken)} >
+  
+  <button className="btn" onClick={openModalHandler} onClick={userDelete(accessToken)} onClick={() => navigator("../")} >
                 Home
               </button>
             </ModalView>

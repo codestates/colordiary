@@ -17,6 +17,7 @@ function NavBar() {
  //어세스토큰 저장소
  const [accessToken, setAccessToken] = useState(null);
  const [userInfo, setUserInfo] = useState({
+   id:'',
    email: '',
    username: '',
    mobile: ''
@@ -37,7 +38,7 @@ function NavBar() {
        // setAccessToken(result)
         setLogin(true)
         setUserInfo(
-    {
+    {   id: result.data.data.id,
       email: result.data.data.email,
       username: result.data.data.username,
       mobile: result.data.data.mobile    

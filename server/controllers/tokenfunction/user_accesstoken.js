@@ -21,10 +21,10 @@ module.exports = async (req, res) => {
       },
     });
     console.log(user, "🐳");
-    const { email, username, mobile, createdAt, updateAt } = user.dataValues;
+    const { id, email, username, mobile, createdAt, updateAt } = user.dataValues;
     return res.status(200).json({
       message: "토큰인증이 성공했습니다.",
-      data: { email, username, mobile, createdAt, updateAt } /* {
+      data: { id, email, username, mobile, createdAt, updateAt } /* {
                  userInfo: {
                     email: email,
                     username: username,

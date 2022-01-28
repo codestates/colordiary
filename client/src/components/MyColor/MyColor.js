@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-//import { useEffect } from 'react';
+import { useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
@@ -68,7 +68,14 @@ const Button2 = styled.button`
 function MyColor({authToken, accessToken, userInfo}) {
 // 일단 <작성완료> onclick 이벤트를 실행시키자마자 토큰인증함수를 실행시키고(어세스토큰을 주어 서버에서 )
 //모든정보를 받아온다. 그리고는 
-    
+
+// let headers = new Headers();
+// headers.append(
+//   "Content-Type",
+//   "application/x-www-form-urlencoded; charset=UTF-8"
+// );
+// headers.append("Accept", "*/*");
+
     const {email} = userInfo
     const[startDate, setStartDate] = useState(new Date());
     const[icon, setIcon] = useState(null)
@@ -106,37 +113,34 @@ function MyColor({authToken, accessToken, userInfo}) {
 
   // 컨텐트
   const contentDatahandler = (e) => {
-    e.preventDefault();
+   /*  e.preventDefault(); */
     setContent(e.target.value);
   };
-  /*  useEffect(() => {
+    useEffect(() => {
        console.log('클릭할때만 나와요')
-    },[content])  */
+    },[content])  
 
   // 포스트요청
-  let body = { email: email, date: startDate, icon: icon, content: content };
-  console.log(body);
+  ;
+  //console.log(body);
 
-    // 포스트요청
-    let body = {email: email, date: startDate, icon: icon,  content: content}
-    console.log(body)
+  //{ headers : headers } 
     
-    const clickPost = (token) => {
+    const clickPost = () => {
         console.log(accessToken, "토큰이 나왔니?")
-        axios.post("https://localhost:5000/user_mycolor", body,{
-        headers : {
-            Authorization: 'Bearer ' + token
-        }  
-    })
+        let body = { email: email, date: startDate, icon: icon, content: content }
+        axios.post("https://localhost:5000/user_mycolor",body,
+        { headers : {
+            Authorization: 'Bearer ' + accessToken
+        }},  
+    )
     .then(result => console.log(result))
     
     }
-    const clickDelete = (token) => {
-        axios.delete("https://localhost:5000/user_mycolor", {
-            headers : {
-                Authorization: 'Bearer ' + token
-            }     
-        }).then(result => console.log(result))
+    const clickCancel = () => {
+       
+         setContent("")       
+        console.log(content) 
     }
 
 
@@ -186,14 +190,11 @@ function MyColor({authToken, accessToken, userInfo}) {
             ></Textarea>
           </div>
         </section>
-        <div>
-          <h3>오늘의 일기</h3>
-          <Textarea onChange={contentDatahandler} placeholder="오늘 어땠나요?"></Textarea>
-        </div>
+       
       
       <div>
-        <Button1 onClick={clickDelete(accessToken)}>취소하기</Button1>
-        <Button2 onClick={clickPost(accessToken)}>작성완료</Button2> 
+        <Button1 onClick={() => {clickCancel()}} value = {content}>취소하기</Button1>
+        <Button2 onClick={() => {clickPost()}}>작성완료</Button2> 
       </div>
     </BigDiv>
         </div>

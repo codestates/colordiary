@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import axios from "axios";
 
 const BigDiv = styled.div`
   background-color: aliceblue;
@@ -120,12 +121,23 @@ const Dbutton = styled.div`
   }
 `;
 
-const Mywriting = () => {
-  return (
+
+
+const Mywriting = ({accessToken}) => {
+    //const {accessToken} = accessToken
+    //const [data, setData] = useState([])
+const get = () => {
+    axios.get("https://localhost:5000/user_mycolor", { headers : {
+        Authorization: 'Bearer ' + accessToken
+    }}  
+    ).then(result => console.log(result))
+
+}
+    return (
     <BigDiv>
       <NavDiv>
         <BntDiv>
-          <NavButton1>:arrow_left:</NavButton1>
+          <NavButton1 onClick ={get()}>:arrow_left:</NavButton1>
         </BntDiv>
         <BntDiv>
           <h1>2022년 1월</h1>
