@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Mycolor() {
+function Footer() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Mycolor() {
     )
 }
 
-export default Mycolor
+export default Footer

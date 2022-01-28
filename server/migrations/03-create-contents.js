@@ -8,14 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
+      message: {
         type: Sequelize.STRING
       },
-      color_id: {
-        type: Sequelize.INTEGER
-      },
-      userInfo_id: {
-        type: Sequelize.INTEGER
+      moodDate: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

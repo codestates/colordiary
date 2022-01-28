@@ -1,10 +1,12 @@
-
-import './App.css';
+import "./App.css";
+import React from "react";
+import NavBar from "./components/NavBar/NavBar"
 
 function App() {
   return (
+    
     <div>
-      <h1> 코딩의 세계에 들어온걸 환영합니다🤪</h1>
+      <NavBar />
     </div>
   );
 }
