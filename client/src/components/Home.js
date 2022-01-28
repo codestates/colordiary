@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Box = styled.div`
-  width: 1300px;
+  width: 100vw;
   height: 400px;
   background-color: ${(props) => props.bgColor};
   display: flex;
@@ -31,14 +31,14 @@ const PBox = styled.p`
 function home() {
   return (
     <div>
-      <Box bgColor="teal">
+      <Box bgColor="aliceblue">
         <UlBox>
           <PBox>WHAT IS IN YOUR MIND...?</PBox>
           <PBox>PUT THE COLOR WHAT YOU WANT!</PBox>
         </UlBox>
         <ImgBox />
       </Box>
-      <Box bgColor="tomato">
+      <Box bgColor="#CCE5FF">
         <ImgBox />
         <UlBox>
           <PBox>당신의 마음을 색깔로 나타내 보세요</PBox>
@@ -46,7 +46,7 @@ function home() {
           <PBox>PUT THE COLOR WHAT YOU WANT!</PBox>
         </UlBox>
       </Box>
-      <Box bgColor="yellow">
+      <Box bgColor="aliceblue">
         <UlBox>
           <PBox>심플, 단순, 깔끔, 그리고 성공적</PBox>
           <PBox>
@@ -59,7 +59,7 @@ function home() {
         </UlBox>
         <ImgBox />
       </Box>
-      <Box bgColor="green">
+      <Box bgColor="#CCE5FF">
         <ImgBox />
         <UlBox>
           <PBox>하루를 모아 일년을 만들어보세요!</PBox>

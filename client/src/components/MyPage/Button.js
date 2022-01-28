@@ -10,12 +10,12 @@ const ButtonDiv = styled.div`
   margin: 0 auto;
 `;
 
-function Button() {
+function Button({authToken , accessToken , userInfo , login}) {
   return (
     <div>
       <ButtonDiv>
-        <LogOut />
-        <WithDrawal />
+        <LogOut authToken ={authToken} accessToken={accessToken}  userInfo = {userInfo} login ={login} />
+        <WithDrawal authToken ={authToken} accessToken={accessToken}  userInfo = {userInfo} login ={login}/>
       </ButtonDiv>
     </div>
   );
